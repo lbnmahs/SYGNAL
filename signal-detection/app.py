@@ -121,14 +121,14 @@ def pre_process_landmark(landmark_list):
 
 
 # LOGGING LANDMARKS TO CSV FILE FUNCTION
-# def logging_csv(number, mode, landmark_list):
-#     if mode == 0:
-#         pass
-#     if mode == 1 and (0 <= number <= 9):
-#         csv_path = 'model_data/classifier_data/keypoints.csv'
-#         with open(csv_path, 'a', newline="") as f:
-#             writer = csv.writer(f)
-#             writer.writerow([number, *landmark_list])
+def logging_csv(number, mode, landmark_list):
+    if mode == 0:
+        pass
+    if mode == 1 and (0 <= number <= 9):
+        csv_path = 'model_data/classifier_data/keypoints.csv'
+        with open(csv_path, 'a', newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow([number, *landmark_list])
 
 # ===== MAIN FUNCTION ===== #
 def main():
