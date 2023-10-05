@@ -131,7 +131,7 @@ def logging_csv(number, mode, landmark_list):
             writer.writerow([number, *landmark_list])
 
 
-# DRAWING THE LANDMARKS ON HAND FUNCTION
+# LISTING & DRAWING THE LANDMARKS ON HAND FUNCTION
 def draw_landmarks(image, landmark_point):
     if len(landmark_point) > 0:
         # Thumb
@@ -319,6 +319,27 @@ def draw_landmarks(image, landmark_point):
 
     return image
 
+# BOUNDING RECTANGLE FUNCTION
+def draw_bounding_rect(use_brect, image, brect):
+    if use_brect:
+        # Outer rectangle
+        cv.rectangle(image, (brect[0], brect[1]), (brect[2], brect[3]), (0, 0, 0), 1)
+
+    return image
+
+# OUTPUT SIGNAL ON BOUNDING BOX FUNCTION
+def draw_info_text(image, brect, handedness, hand_sign_text):
+    cv.rectangle(image, (brect[0], brect[1]), (brect[2], brect[1] - 22), (0, 0, 0), -1)
+
+    info_text = handedness.classification[0].label[0:]
+    if hand_sign_text != "":
+        info_text = info_text + ':' + hand_sign_text
+
+    cv.putText(image, info_text, (brect[0] + 5, brect[1] - 4), cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv.LINE_AA)
+    cv.putText(image, "Signal: " + hand_sign_text, (10, 80), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 4, cv.LINE_AA)
+    cv.putText(image, "Signal: " + hand_sign_text, (10, 80), cv.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)
+
+    return image
 
 # ===== MAIN FUNCTION ===== #
 def main():
