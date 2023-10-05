@@ -327,7 +327,7 @@ def draw_bounding_rect(use_brect, image, brect):
 
     return image
 
-# OUTPUT SIGNAL ON BOUNDING BOX FUNCTION
+# SIGNAL OUTPUT ON BOUNDING BOX FUNCTION
 def draw_info_text(image, brect, handedness, hand_sign_text):
     cv.rectangle(image, (brect[0], brect[1]), (brect[2], brect[1] - 22), (0, 0, 0), -1)
 
