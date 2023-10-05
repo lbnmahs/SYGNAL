@@ -120,7 +120,7 @@ def pre_process_landmark(landmark_list):
     return temp_landmark_list
 
 
-# LOGGING LANDMARKS TO CSV FILE FUNCTION
+# LOGGING LANDMARK KEYPOINTS TO CSV FILE
 def logging_csv(number, mode, landmark_list):
     if mode == 0:
         pass
@@ -131,7 +131,7 @@ def logging_csv(number, mode, landmark_list):
             writer.writerow([number, *landmark_list])
 
 
-# LISTING & DRAWING THE LANDMARKS ON HAND FUNCTION
+# LISTING & DRAWING THE LANDMARKS ON HAND
 def draw_landmarks(image, landmark_point):
     if len(landmark_point) > 0:
         # Thumb
@@ -327,7 +327,7 @@ def draw_bounding_rect(use_brect, image, brect):
 
     return image
 
-# SIGNAL OUTPUT ON BOUNDING BOX FUNCTION
+# DISPLAYING SIGNAL INFO TEXT ON BOUNDING BOX FUNCTION
 def draw_info_text(image, brect, handedness, hand_sign_text):
     cv.rectangle(image, (brect[0], brect[1]), (brect[2], brect[1] - 22), (0, 0, 0), -1)
 
