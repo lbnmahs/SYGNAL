@@ -15,9 +15,6 @@ from utils import CvFpsCalc
 from model_data import SignalClassifier
 
 
-
-
-
 # ===== FUNCTIONS ===== #
 
 # ARGUMENTS FUNCTION
@@ -319,6 +316,7 @@ def draw_landmarks(image, landmark_point):
 
     return image
 
+
 # BOUNDING RECTANGLE FUNCTION
 def draw_bounding_rect(use_brect, image, brect):
     if use_brect:
@@ -327,7 +325,8 @@ def draw_bounding_rect(use_brect, image, brect):
 
     return image
 
-# DISPLAYING SIGNAL INFO TEXT ON BOUNDING BOX FUNCTION
+
+# DISPLAYING SIGNAL INFO TEXT ON BOUNDING BOX
 def draw_info_text(image, brect, handedness, hand_sign_text):
     cv.rectangle(image, (brect[0], brect[1]), (brect[2], brect[1] - 22), (0, 0, 0), -1)
 
@@ -338,6 +337,22 @@ def draw_info_text(image, brect, handedness, hand_sign_text):
     cv.putText(image, info_text, (brect[0] + 5, brect[1] - 4), cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv.LINE_AA)
     cv.putText(image, "Signal: " + hand_sign_text, (10, 80), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 4, cv.LINE_AA)
     cv.putText(image, "Signal: " + hand_sign_text, (10, 80), cv.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)
+
+    return image
+
+
+# SHOWING FPS AND SIGNAL TEXT ON TOP LEFT CORNER
+def draw_info(image, fps, mode, number):
+    cv.putText(image, "FPS:" + str(fps), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 4, cv.LINE_AA)
+    cv.putText(image, "FPS:" + str(fps), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)
+
+    mode_string = ['Logging Key Point']
+
+    if mode == 1:
+        cv.putText(image, "MODE:" + mode_string[mode - 1], (10, 90), cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv.LINE_AA)
+
+        if 0 <= number <= 9:
+            cv.putText(image, "NUM:" + str(number), (10, 110), cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv.LINE_AA)
 
     return image
 
@@ -394,5 +409,8 @@ def main():
 
 
     # ===== INITIALIZE ===== #
+
+
+
 if __name__ == '__main__':
     main()
