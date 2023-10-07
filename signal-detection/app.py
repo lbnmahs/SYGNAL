@@ -43,6 +43,7 @@ def get_args():
 
     return args
 
+
 # MODE SELECTION FUNCTION
 def select_mode(key, mode):
     number = -1
@@ -406,9 +407,27 @@ def main():
     history_length = 16
     finger_gesture_history = deque(maxlen=history_length)
 
+    mode = 0
+
+    while True:
+        fps = cvFpsCalc.get()
+
+        # Close camera upon pressing ESC key
+        key = cv.waitKey(10)
+        if key == 27:  # ESC
+            break
+        number, mode = select_mode(key, mode)
+
+        # Camera capture
+        ret, image = cap.read()
+        if not ret:
+            break
+        image = cv.flip(image, 1)  # Mirror display
+        debug_image = copy.deepcopy(image)
 
 
-    # ===== INITIALIZE ===== #
+
+# ===== INITIALIZE ===== #
 
 
 
