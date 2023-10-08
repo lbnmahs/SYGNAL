@@ -396,9 +396,7 @@ def main():
         encoding='utf-8-sig'
     ) as f:
         keypoint_classifier_labels = csv.reader(f)
-        keypoint_classifier_labels = [
-            row[0] for row in keypoint_classifier_labels
-        ]
+        keypoint_classifier_labels = [ row[0] for row in keypoint_classifier_labels ]
 
     # Initializing the FPS calculator
     cvFpsCalc = CvFpsCalc(buffer_len=10)
@@ -428,8 +426,5 @@ def main():
 
 
 # ===== INITIALIZE ===== #
-
-
-
 if __name__ == '__main__':
     main()
