@@ -1,1 +1,2 @@
-from model_data.classifier_data.classifier import SignalClassifier
+from model_data.keypoint_classifier.keypoint_classifier import KeyPointClassifier
+from model_data.point_classifier.point_history_classifier import PointHistoryClassifier
