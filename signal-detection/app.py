@@ -392,7 +392,7 @@ def main():
 
     # Reading the Labels
     with open(
-        'model_data/classifier_data/classifier_labels.csv',
+        'model_data/keypoint_classifier_data/classifier_labels.csv',
         encoding='utf-8-sig'
     ) as f:
         keypoint_classifier_labels = csv.reader(f)
